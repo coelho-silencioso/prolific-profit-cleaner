@@ -56,7 +56,7 @@ df['Total_usd'] = df['Reward_usd'] + df['Bonus_usd']
 df['Status_clean'] = df['Status'].str.strip().str.lower()
 
 # =====================================================
-# 🔥 TOTALS
+# TOTALS
 # =====================================================
 
 approved_total = df.loc[df['Status_clean'] == 'approved', 'Total_usd'].sum()
@@ -75,7 +75,7 @@ real_total = round(approved_total + screened_bonus_total, 2)
 print(f"Real earned: ${real_total:.2f}")
 
 # =====================================================
-# 🔥 DAILY REAL (paid)
+# DAILY REAL (paid)
 # =====================================================
 
 daily_real = (
@@ -93,7 +93,7 @@ for date, total in daily_real.items():
     print(f"{date}: ${total:.2f}")
 
 # =====================================================
-# 🔥 DAILY WAITING (pending)
+# DAILY WAITING (pending)
 # =====================================================
 
 daily_waiting = (
@@ -107,7 +107,7 @@ for date, total in daily_waiting.items():
     print(f"{date}: ${total:.2f}")
 
 # =====================================================
-# 🔥 DAILY COMBINED (real + waiting)
+# DAILY COMBINED (real + waiting)
 # =====================================================
 
 daily_combined = (daily_real + daily_waiting).fillna(0).round(2)
@@ -117,7 +117,7 @@ for date, total in daily_combined.items():
     print(f"{date}: ${total:.2f}")
 
 # =====================================================
-# 🔥 SCREENED (UNPAID PORTION ONLY)
+# SCREENED (UNPAID PORTION ONLY)
 # =====================================================
 
 daily_screened_unpaid = (
@@ -131,7 +131,7 @@ for date, total in daily_screened_unpaid.items():
     print(f"{date}: ${total:.2f}")
 
 # =====================================================
-# 🔥 RETURNED (uses Started At fallback automatically)
+# RETURNED (uses Started At fallback automatically)
 # =====================================================
 
 daily_returned = (
